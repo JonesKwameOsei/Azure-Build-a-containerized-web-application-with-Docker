@@ -46,6 +46,7 @@ docker run -d -p 8080:8080 mcr.microsoft.com/dotnet/samples:aspnetapp
 
 6. Access the web app<p>
 To access the wep app in the browser, we nopen a web browser and enter the URL for the sample web app: **http://localhost:8080**. You should see a page that looks like the following screenshot:<p>
+
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/249dc183-e125-44ee-9e92-8feb056673b4)<p>
 
 We can confirm from **docker desktop**if the image and container exist. <p>
