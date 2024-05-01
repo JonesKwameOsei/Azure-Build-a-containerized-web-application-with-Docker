@@ -132,6 +132,195 @@ docker/welcome-to-docker         latest        c1f619b6477e   5 months ago   18.
 kicbase/stable                   v0.0.42       dbc648475405   5 months ago   1.2GB 
 mcr.microsoft.com/mssql/server   2022-latest   86b87ec5e60a   6 months ago   1.57GB
 ```
+# Customise a Docker Image to run a Personlised Web App
+We have looked at how we can pull an image from **Docker Hub**. Docker Hub offers a great selection of images to help kickstart our containerised app development. You can easily obtain an image with the essential features DevOps need and then add our own application on top of it to create a personalised image. To streamline this process, we can automate the steps by creating a **Dockerfile**. <p>
+
+A **Dockerfile** contains the steps for building a custom Docker image.<p>
+When a DevOps choses to utilise `Docker` to deploy one of the organisation's web applications. The selected web app is a straightforward implementation of a web `API` for a hotel reservations website. The web API allows for `HTTP POST` and `GET` operations to create and retrieve customer bookings.<p><p>
+
+In this section, we will create a `Dockerfile` for a web application that currently does not have one. Afterward, build the image and run it in our local environment.
+
+## Create a Dockerfile for the web app
+1. Start `Docker Desktop`
+2. Make a new directory called booking_web_app and `cd` into it 
+```
+mkdir booking_web_app    # creates the working directoy 
+cd booking_web_app       # change directory to booking_web_app
+``` 
+3. Clone the web app repo: Execute the command in your local computer's command prompt window or a terminal in an IDE to download the source code for the web app.
+```
+git clone https://github.com/MicrosoftDocs/mslearn-hotel-reservation-system.git
+```
+4. Change directory to mslearn-hotel-reservation-system and list the files within.
+```
+cd mslearn-hotel-reservation-system
+ls
+```
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/731558c5-9d63-4d66-bb07-91f3304b7204)<p>
+There is a sourcecode (`src`) amongst the listed output. This is the source code to build the web app. <p>
+4. Enter the following command to open the `src` directory.
+```
+cd mslearn-hotel-reservation-system/src
+```
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/d8e91104-13c3-49e4-93e2-67317e02e80f)<p>
+5. In the src directory, use the following commands to generate a new file called Dockerfile and then open it in Notepad or Text editor.
+```
+copy NUL Dockerfile               # Create the Dockerfile on windows cmd prompt
+notepad Dockerfile                # Edit the Dockerfile in Windows Notepa
+#######################################################################################
+vi Dockerfile                   # Create and edit the Dockerfile in Linux/Mac/GitBash
+```
+6. Add the following code to the Dockerfile:
+```
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2
+WORKDIR /src
+COPY ["/HotelReservationSystem/HotelReservationSystem.csproj", "HotelReservationSystem/"]
+COPY ["/HotelReservationSystemTypes/HotelReservationSystemTypes.csproj", "HotelReservationSystemTypes/"]
+RUN dotnet restore "HotelReservationSystem/HotelReservationSystem.csproj"
+```
+The `Dockerfile` script includes instructions to retrieve an image that includes the **.NET Core Framework SDK**. It also copies the project files for the web app `(HotelReservationSystem.csproj)` and the library project `(HotelReservationSystemTypes.csproj)` to the **/src** folder within the container. Additionally, the `dotnet restore` command is used to download the necessary dependencies from **NuGet** for these projects.
+7. Append the following code to the bottom of the Dockerfile:
+```
+COPY . .
+WORKDIR "/src/HotelReservationSystem"
+RUN dotnet build "HotelReservationSystem.csproj" -c Release -o /app
+```
+Copy the web app's source code to the container and then execute the dotnet build command to compile the app. The compiled DLLs will be saved to the /app directory within the container. 
+
+8. Add the following command to the end of the Dockerfile.
+```
+RUN dotnet publish "HotelReservationSystem.csproj" -c Release -o /app
+```
+The `dotnet publish` command transfers the website's executable files to a fresh directory while eliminating any temporary files. The files in this directory can be deployed to a website.
+9. At the end of the Dockerfile, add
+```
+EXPOSE 80
+WORKDIR /app
+ENTRYPOINT ["dotnet", "HotelReservationSystem.dll"]
+```
+The `initial` command, `EXPOSE 80`, allows access to port 80 within the container. The subsequent command navigates to the `/app` directory where the published version of the web app is located. The last command sets the container to run and execute the `dotnet HotelReservationSystem.dll` command, which contains the compiled code for the web app.
+10. Please save the document and then close the text editor. 
+**N/B**: In Windows Notepad, ensure that it is save as `All Files` with no file extension.<p>
+The full `Dockerfile` will look like this:
+```
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2
+WORKDIR /src
+COPY ["/HotelReservationSystem/HotelReservationSystem.csproj", "HotelReservationSystem/"]
+COPY ["/HotelReservationSystemTypes/HotelReservationSystemTypes.csproj", "HotelReservationSystemTypes/"]
+RUN dotnet restore "HotelReservationSystem/HotelReservationSystem.csproj"
+COPY . .
+WORKDIR "/src/HotelReservationSystem"
+RUN dotnet build "HotelReservationSystem.csproj" -c Release -o /app
+RUN dotnet publish "HotelReservationSystem.csproj" -c Release -o /app
+EXPOSE 80
+WORKDIR /app
+ENTRYPOINT ["dotnet", "HotelReservationSystem.dll"]
+```
+## Build and deploy the image using the Dockerfile
+1. Build the Image: use the following commands to create the image for the sample app using the Dockerfile. Ensure to include a period `.` at the end of the command. This command will create the image and save it locally with the name reservationsystem. Confirm that the image is successfully created. When the process is complete, we may see warnings about file and directory permissions, which can be ignored for this exercise.<p>
+**Note**:The image may take some time to build.
+```
+docker build -t reservationsystem .
+```
+The docker build command operates by creating a container, executing commands within it, and subsequently saving the modifications as a new image.<p>
+**output**:
+```
+[+] Building 745.4s (15/15) FINISHED                                  docker:default
+ => [internal] load build definition from Dockerfile                            0.0s
+ => => transferring dockerfile: 624B                                            0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/core/sdk:2.2          1.0s
+ => [internal] load .dockerignore                                               0.0s
+ => => transferring context: 2B                                                 0.0s
+ => [ 1/10] FROM mcr.microsoft.com/dotnet/core/sdk:2.2@sha256:42699bba2fe454  687.0s
+ => => resolve mcr.microsoft.com/dotnet/core/sdk:2.2@sha256:42699bba2fe4545dd7  0.0s
+ => => sha256:9935d0c62ace92b388be202275e222007d6cac10b9c1f 10.80MB / 10.80MB  44.9s
+ => => sha256:2357b6790b9df0fb28364d113ff94eb67628cb1564aa8607 4.40kB / 4.40kB  0.0s
+ => => sha256:146bd6a886182fde06fbf747470b1c89814bc8ab1c96 45.38MB / 45.38MB  158.4s
+ => => sha256:db0efb86e80601b5bbdbb7c406426982c4202d339687c14 4.34MB / 4.34MB  12.7s 
+ => => sha256:42699bba2fe4545dd753694499e6db08478ba5b3bcc34b92 2.19kB / 2.19kB  0.0s 
+ => => sha256:db9b38d066fdbdd5ac5ce862076c27e4ae17f2b57cbacd03 1.80kB / 1.80kB  0.0s 
+ => => sha256:e705a4c4fd310b96bfb3d7928428e65f0d3f5bad0cd0 50.07MB / 50.07MB  165.7s 
+ => => sha256:563ac9aa7c8039c3169f383c57e43c0d8281d01f6b6c5 13.25MB / 13.25MB  85.6s 
+ => => sha256:9db5b5c16f62413ee33c1b77d00b801b18b0a9bb8d 173.40MB / 173.40MB  478.6s
+ => => extracting sha256:9935d0c62ace92b388be202275e222007d6cac10b9c1f2c1ea63a  0.6s
+ => => extracting sha256:db0efb86e80601b5bbdbb7c406426982c4202d339687c14c3941b  0.2s
+ => => extracting sha256:e705a4c4fd310b96bfb3d7928428e65f0d3f5bad0cd0bda1434ae  3.2s
+ => => extracting sha256:563ac9aa7c8039c3169f383c57e43c0d8281d01f6b6c59a4f5b0e  0.2s
+ => => extracting sha256:9db5b5c16f62413ee33c1b77d00b801b18b0a9bb8dd5151c35cad  2.2s
+ => => extracting sha256:ff05a093e8aa7f92b287883ed215c63b767074e67aa2a730ae82  30.4s
+ => [internal] load build context                                               0.1s
+ => => transferring context: 16.05kB                                            0.1s
+ => [ 2/10] WORKDIR /src                                                        0.4s
+ => [ 3/10] COPY [/HotelReservationSystem/HotelReservationSystem.csproj, Hotel  0.1s
+ => [ 4/10] COPY [/HotelReservationSystemTypes/HotelReservationSystemTypes.csp  0.0s
+ => [ 5/10] RUN dotnet restore "HotelReservationSystem/HotelReservationSystem  48.3s
+ => [ 6/10] COPY . .                                                            0.0s
+ => [ 7/10] WORKDIR /src/HotelReservationSystem                                 0.0s
+ => [ 8/10] RUN dotnet build "HotelReservationSystem.csproj" -c Release -o /ap  3.6s
+ => [ 9/10] RUN dotnet publish "HotelReservationSystem.csproj" -c Release -o /  4.0s
+ => [10/10] WORKDIR /app                                                        0.0s
+ => exporting to image                                                          0.6s
+ => => exporting layers                                                         0.5s
+ => => writing image sha256:91e4b40129c006cfcb56f4581d576715b4de1145ea7beff2ee  0.0s
+ => => naming to docker.io/library/reservationsystem                            0.0s
+
+View build details: docker-desktop://dashboard/build/default/default/ohw4sr5b3xh1q3ow4418qgyyc
+
+What's Next?
+  View a summary of image vulnerabilities and recommendations → docker scout quickview
+```
+2. List images: We will verify that the the `Dockerfile` execution has created the image and saved in the locally registry:
+```
+docker image list
+```
+**output**: The image will have the name `reservationsystem`. We'll also have an image named microsoft/dotnet:
+```
+REPOSITORY                       TAG           IMAGE ID       CREATED         SIZE
+reservationsystem                latest        91e4b40129c0   7 minutes ago   1.87GB
+```
+Let is confirm from the `Docker Desktop`:<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/9438c04b-8f3f-4e18-a618-ab9338859206)<p>
+
+## Test the web app
+1. Run a container using the `reservationsystem` image: The output from Docker will be a long hexadecimal string. The container operates without a graphical interface in the background. `Port 80` within the container is linked or mapped to `port 8080` on the host machine. The container's name is `reservations`.
+```
+docker run -p 8080:80 -d --name reservations reservationsystem
+```
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/2a03da68-6ecb-4fe6-9ab8-3a46ac9f5683)<p>
+From the `Docker Desktop`, we can confirm if the container is running.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/81db78be-c9a6-4de1-a0c9-034b4f2ef644)<p>
+We can see that the image status is `In Use` as compared to the status `Unuse` before running the container. See the container named `reservations` running the image `reservationsystem`:<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/93df9034-e589-44ee-b5f3-c71298fca442)<p>
+2. Access the web app in the browser: Open a web browser and go to `http://localhost:8080/api/reservations/1` . We will be able to view a JSON object displaying the data for reservation number 1, similar to the example output shown below:<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/6ce5cc8d-1602-4c75-b4ac-a985c0e279c2)<p>
+To view the details of a specific reservation, simply replace the "1" at the end of the localhost URL with a different reservation number, such as 2 or 20.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/bce11532-b850-443c-a26e-79b17b41d4f2)<p>
+3. Verify that the container's `STATU`S is *Up*. Run:
+```
+docker ps -a
+```
+The output indicates the `status` is up: <p>
+```
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED          STATUS                      PORTS                                                                                                                                  NAMES
+ed5acef128ad   reservationsystem                            "dotnet HotelReserva…"   19 minutes ago   Up 19 minutes               0.0.0.0:8080->80/tcp                                          ```
+4. Stop the  reservations container. To stop the container running, apply this command:
+```
+docker container stop reservations
+```
+The container has exited:<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/bf9fe494-4e86-44f0-bb1c-0352f92199cb)<p>
+5. Delete the reservations container from the local registry.
+```
+docker rm reservations
+```
+The container has been removed:<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/a140df3a-3377-4062-95e7-42da304809bb)
+
+# Deploy a Docker image to an Azure Container Instance
+
+
+
+
 
 
 
