@@ -78,7 +78,7 @@ Refresh the page for the sample web app in opened earlier in the web browser (ht
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/0d3f555b-c108-4f4d-92a4-9135dd19cd79)<p>
 
 ## Remove the container and image from the local registry
-1. Stop the container, it is still loaded and can be restarted. Run the following command in the command prompt window to remove it, replacing `<NAME>` or `<ID>` placeholder with the name of your container. Run
+1. Stop the container, it is still loaded and can be restarted. Run the following command in the command prompt window to remove it, replacing `<NAME>` or `<ID>` placeholder with the name of your container. Run:
 ```
 docker container rm <NAME>
 ```
