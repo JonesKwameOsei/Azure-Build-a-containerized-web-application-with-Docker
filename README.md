@@ -53,10 +53,24 @@ We can confirm from **docker desktop**if the image and container exist. <p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/7a45c1c8-ae86-4a1c-9449-a5adaac87e36)<p>
 
 ## Perform operations on the the container in the local Docker registry
+1. View the running containers in the local registry.
+```
+docker ps
+```
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/9f8e3c4b-0f5a-4b00-b7bc-95393de13828)<p>
 
+The COMMAND field shows the container was started by running the command 'dotnet aspnetapp.dll', which invokes the .NET Core runtime to start the sample web app code. The PORTS field indicates `port 8080` in the container was mapped to `port 8080` on the host computer. The STATUS field shows the application is still running. 
 
+2. Stop the Docker container using the output name or container ID from the previous command by replacing the placeholder <NAME>/<container id>
 
-
+```
+docker container stop <name>/<container ID>
+```
+3. Use the command below to check if the container is no longer running. Use the -a flag to display the status of all containers, including those that are not running. The output should indicate that the container's status is Exited.
+```
+docker ps -a
+```
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/12755279-dd15-4cc5-8775-58f3fc0d1705)<p>
 
 
 
