@@ -73,7 +73,7 @@ docker ps -a
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/12755279-dd15-4cc5-8775-58f3fc0d1705)<p>
 
 4. Confirm from the browser if the web app has stopped.
-Refresh the page for the sample web app in opened earlier in the web browser (http://localhost:8080/). It should fail with a **Connection Refused error***.<p>
+Refresh the page for the sample web app in opened earlier in the web browser (http://localhost:8080/). It should fail with a **Connection Refused error**.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/0d3f555b-c108-4f4d-92a4-9135dd19cd79)<p>
 
 ## Remove the container and image from the local registry
@@ -81,7 +81,7 @@ Refresh the page for the sample web app in opened earlier in the web browser (ht
 ```
 docker container rm <NAME>
 ```
-The image status on docker desktop, `unsued` indicates the container has been removed.<p?
+The image status on docker desktop, `unsued` indicates the container has been removed.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/46f5314e-6d2d-4d29-8c5b-18f2d5b57e97)<p>
 
 2. Verify container removal by running the command. The command should no longer list the container.
