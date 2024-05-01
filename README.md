@@ -81,13 +81,56 @@ Refresh the page for the sample web app in opened earlier in the web browser (ht
 ```
 docker container rm <NAME>
 ```
-The image status on docker desktop, `unsued` indicates the container has been removed.
+The image status on docker desktop, `unsued` indicates the container has been removed.<p?
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/46f5314e-6d2d-4d29-8c5b-18f2d5b57e97)<p>
 
+2. Verify container removal by running the command. The command should no longer list the container.
+```
+docker ps -a
+```
+It is remove and not running.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/4fca4d75-5ddc-4245-bfef-78b60f810ba2)<p>
+3. List the images currently available on your computer. The output should show the samples repository.<p>
+```
+docker image ls
+```
+**Output**:
+```
+REPOSITORY                         TAG           IMAGE ID       CREATED        SIZE
+mcr.microsoft.com/dotnet/samples   aspnetapp     dcc39f34ca59   3 weeks ago    115MB
+docker/welcome-to-docker           latest        c1f619b6477e   5 months ago   18.6MB
+kicbase/stable                     v0.0.42       dbc648475405   5 months ago   1.2GB
+mcr.microsoft.com/mssql/server     2022-latest   86b87ec5e60a   6 months ago   1.57GB
+```
+4. Remove the image from the registry.
+```
+docker image rm mcr.microsoft.com/dotnet/samples:aspnetapp
+```
+**Output**:
+```
+Untagged: mcr.microsoft.com/dotnet/samples:aspnetapp
+Untagged: mcr.microsoft.com/dotnet/samples@sha256:9eff28ca884ba26647500affe757c4c888f977132a09de82387fd71564d66625
+Deleted: sha256:dcc39f34ca59304fe63dab9b2a36d45a8e669e989be3d4df5131295eead0f793
+Deleted: sha256:e89e62c9829f97cca2f465da7f57d491412f964e7ea933bc211d92fe2efb594b
+Deleted: sha256:877083ecdbff27ada37d033a59f16d20f82a7c7544f5125f82b727d050cdc31c
+Deleted: sha256:5eccfba2a75c8ee5e6e3d6679cc7b20e41a2e61a2fbd171ba694200e2cb41eb5
+Deleted: sha256:3a2446b9f9a730513eb6e998a56d11af2dfa02e1d46fa9966026429919bf0be8
+Deleted: sha256:79b503757f21dd6e1fbf3883f3c170a29ebac82e1d0ab4298467c36e79f9b4c4
+Deleted: sha256:5eda52074615a611da6247776046258a553e90c6450368f50e2e20d125f4fca2
+```
+The output lists untagged and deleted items. Then, run the command to list the images again and verify that the image for the microsoft/dotnet-samples web app has disappeared.
 
-
-
-
+5. Let us verify if the image has been deleted.
+```
+docker image ls
+```
+The output shows that the image is removed. 
+```
+REPOSITORY                       TAG           IMAGE ID       CREATED        SIZE
+docker/welcome-to-docker         latest        c1f619b6477e   5 months ago   18.6MB
+kicbase/stable                   v0.0.42       dbc648475405   5 months ago   1.2GB
+mcr.microsoft.com/mssql/server   2022-latest   86b87ec5e60a   6 months ago   1.57GB
+```
 
 
 
