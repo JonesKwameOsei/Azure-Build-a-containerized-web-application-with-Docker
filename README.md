@@ -128,7 +128,7 @@ The output shows that the image is removed.
 ```
 REPOSITORY                       TAG           IMAGE ID       CREATED        SIZE
 docker/welcome-to-docker         latest        c1f619b6477e   5 months ago   18.6MB
-kicbase/stable                   v0.0.42       dbc648475405   5 months ago   1.2GB
+kicbase/stable                   v0.0.42       dbc648475405   5 months ago   1.2GB 
 mcr.microsoft.com/mssql/server   2022-latest   86b87ec5e60a   6 months ago   1.57GB
 ```
 
