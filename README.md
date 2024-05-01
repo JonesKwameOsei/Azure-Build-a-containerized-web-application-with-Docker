@@ -72,7 +72,7 @@ docker ps -a
 ```
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/12755279-dd15-4cc5-8775-58f3fc0d1705)<p>
 
-4. Confirm from the browser if the web app has stopped.
+4. Confirm from the browser if the web app has stopped.<p>
 Refresh the page for the sample web app in opened earlier in the web browser (http://localhost:8080/). It should fail with a **Connection Refused error**.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/0d3f555b-c108-4f4d-92a4-9135dd19cd79)<p>
 
