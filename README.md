@@ -303,6 +303,7 @@ The output indicates the `status` is up: <p>
 ```
 CONTAINER ID   IMAGE                                        COMMAND                  CREATED          STATUS                      PORTS                                                                                                                                  NAMES
 ed5acef128ad   reservationsystem                            "dotnet HotelReserva…"   19 minutes ago   Up 19 minutes               0.0.0.0:8080->80/tcp                                          ```
+```
 4. Stop the  reservations container. To stop the container running, apply this command:
 ```
 docker container stop reservations
