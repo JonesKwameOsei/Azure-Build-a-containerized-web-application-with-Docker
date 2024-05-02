@@ -350,25 +350,49 @@ Under `Instance details`:
 6.Click on `Go to resource`. This launch the Container registry pane, which displays key information about your newly created container registry.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/ab27256a-be1f-480a-8eff-f6fa23a839a7)<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/ea382d0e-d0f3-4ebe-988a-c1238cead268)<p>
-7. In the resource menu, under the "Settings" section, select "Access keys". This will open the Access keys pane for your container registry.<p>
+7. In the resource menu, under the `Settings` section, click the dropdown next to settings and select `Access keys`. This will open the Access keys pane for your container registry.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/8324807a-8df8-429a-8ee3-14c897366b0b)<p>
 
 8. If the Admin user setting is currently disabled, toggle the slider to enable the Admin user access key. Once enabled, the Username and Password for your container registry will be displayed.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/d44d1518-3b6a-402e-8810-cfd7723c4096)<p>
 
-9. Record the following information for your container registry: the Registry name, Login server, Username, and Password.<p>
-**N/B**: In this exercise, we are enabling the admin account access to allow for uploading images and testing the registry. However, in a production environment, it's important to disable the Admin user account access and instead use Microsoft Entra ID Protection as soon as you've confirmed the registry is functioning as expected.
+9. Record the following information for your container registry: the `Registry name`, `Login server`, `Username`, and `Password`.<p>
+**N/B**: In this project, we are enabling the `admin account access` to allow for uploading images and testing the registry. However, in a `production environment`, it's important to `disable the Admin user account access` and instead use `Microsoft Entra ID Protection` as soon as you've confirmed the registry is functioning as expected.
 ## Upload the image for the hotel reservation system app to Azure Container Registry
+1. Run the following command, replacing `<registry-name>` with the actual name of your container registry, to tag the current `reservationsystem` image with the name of your registry.
+```
+docker tag reservationsystem:latest <registry-name>.azurecr.io/reservationsystem:latest
+```
+2. Execute the `docker image ls` command to verify that the image has been tagged correctly.
+```
+docker image ls
+```
+The `output` should be similar to the following:
+```
+REPOSITORY                                            TAG           IMAGE ID       CREATED        SIZE
+reservationsystem                                     latest        91e4b40129c0   14 hours ago   1.87GB
+jonesdeploywebappaci25.azurecr.io/reservationsystem   latest        91e4b40129c0   14 hours ago   1.87GB
+```
+This image has also been populated in **Docker Desktop**.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/f1ffa66d-c90f-4e65-8dd3-420f3f294ac3)<p>
 
+3. Sign in to the Azure Container Registry created. Use the `docker login` command and provide the login server for the registry that was noted earlier. When prompted, enter the username and password from the access keys you recorded previously.
+```
+docker login <login-server>
+```
+**N/B**: You may encounter an error message indicating that your application is not registered with Microsoft Entra ID. As mentioned earlier in this exercise, we have enabled the Admin user access key to facilitate testing of the deployment.
+4. Enter the following command, replacing `<registry-name>` with the actual name of th registry created, to upload the image to your Azure Container Registry.
+```
+docker push <registry-name>.azurecr.io/reservationsystem:latest
+```
+## Verify the contents of the registry
+1. In the Azure portal, navigate back to your container registry.
 
+2. Under the Services section in the resource menu, select Repositories. This will take you to the Repositories pane for your container registry.
 
-
-
-
-
-
-
-
+3. Verify that the **reservationsystem** repository is present. Select the **reservationsystem** repository and confirm that it contains an image with the **latest** tag.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/9ce307e0-597e-4004-b58f-f35a1cbd0503)<p>
+![Reservationsystem](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/eb8cd81b-f589-417d-8ba7-aa51aaec02a8)<p>
 
 
 
