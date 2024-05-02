@@ -422,7 +422,7 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 4. Proceed to the Networking section.
 
 5. For each setting on the Networking tab, input the specified values.<p>
-|Setting|Value
+|Setting|Value|
 |-----------|--------------|
 |Networking type	Public|
 |DNS name label	|Choose a unique name, which will be used as part of the container's URL|
