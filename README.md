@@ -329,8 +329,36 @@ In this section, we will learn how to rebuild the image for the web app and then
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/f0f7de6e-981e-4327-a851-5c67d9b0b42d)<p>
 3. Choose `Containers` from the menu, then click on `Container Registry`.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/9bd361e5-d91d-4c97-87ee-4faba6ff2237)<p>
+The pane for creating a container registry is displayed.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/85cf8a86-a148-4027-9d32-118071660e50)<p>
 
+4. Input the specified values for each setting on the Basics tab.
+Under `Project details`:<p>
+- `Subscription` - Select your Azure subscription in which you're allowed to create and manage resources.
+- `Resource group` - Create a new resource group with the name "learn-deploy-container-aci-rg". Remember this name, as it will be used in the rest of the project.<p>
+**N/B**: We will clean up this resource when the project is completed.<p>
 
+Under `Instance details`:
+- `Registry name`  - Choose a name for the container registry. The registry name must be unique within Azure and contain between 5 and 50 alphanumeric characters.
+- `Location` - Choose a location that is geographically close to you.
+- `SKU` - Standard<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/bba3b44b-b3bc-4f5d-9750-5811fb582e28)
+
+5. Click on `Review + create`. Once the `Validation passed` notification pops up, select `Create`. **Wait** until the container registry has been fully deployed before proceeding to the next step.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/4609a977-b521-4734-926c-8248ac6420a6)<p>
+
+6.Click on `Go to resource`. This launch the Container registry pane, which displays key information about your newly created container registry.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/ab27256a-be1f-480a-8eff-f6fa23a839a7)<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/ea382d0e-d0f3-4ebe-988a-c1238cead268)<p>
+7. In the resource menu, under the "Settings" section, select "Access keys". This will open the Access keys pane for your container registry.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/8324807a-8df8-429a-8ee3-14c897366b0b)<p>
+
+8. If the Admin user setting is currently disabled, toggle the slider to enable the Admin user access key. Once enabled, the Username and Password for your container registry will be displayed.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/d44d1518-3b6a-402e-8810-cfd7723c4096)<p>
+
+9. Record the following information for your container registry: the Registry name, Login server, Username, and Password.<p>
+**N/B**: In this exercise, we are enabling the admin account access to allow for uploading images and testing the registry. However, in a production environment, it's important to disable the Admin user account access and instead use Microsoft Entra ID Protection as soon as you've confirmed the registry is functioning as expected.
+## Upload the image for the hotel reservation system app to Azure Container Registry
 
 
 
