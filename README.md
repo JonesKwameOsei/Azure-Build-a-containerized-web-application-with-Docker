@@ -422,10 +422,14 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 4. Proceed to the Networking section.
 
 5. For each setting on the Networking tab, input the specified values.<p>
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+|Setting|Value|
+| -------|------|
+|Project details|
+| Subscription	| Select your default Azure subscription in which you're allowed to create and manage resources |
+| Resource group |	Reuse the existing resource group learn-deploy-container-aci-rg |
+| Container details	|
+| Container name |	hotelsysteminstance |
+| Region |	Use the default location |
 
 
 
