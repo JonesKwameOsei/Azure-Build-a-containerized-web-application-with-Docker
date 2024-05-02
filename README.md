@@ -439,9 +439,14 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 | Command override |	leave blank |<p>
 
 8. Choose **Review + Create**. Wait for validation to finish and make any necessary corrections.
-9. Choose **Create**.
-10. Once the container instance is created, click on **Go to resource**. The container instance pane will appear.
-11. Locate the **fully qualified domain name (FQDN)** of the container instance on the **Overview pane**.
+9. Choose **Create**.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/f7565cd9-c99e-4acc-96b9-3153d72fe982)<p>
+
+10. Once the container instance is created, click on **Go to resource**. The container instance pane will appear.<p>
+![hotelsysteminstance](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/40cac7ba-2230-4bb1-8ce2-a507fa5a3308)<p>
+
+11. Locate the **fully qualified domain name (FQDN)** of the container instance on the **Overview pane**.<p>
+
 
 
 
