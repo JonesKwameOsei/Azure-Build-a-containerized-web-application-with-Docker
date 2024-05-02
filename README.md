@@ -442,10 +442,30 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 9. Choose **Create**.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/f7565cd9-c99e-4acc-96b9-3153d72fe982)<p>
 
-10. Once the container instance is created, click on **Go to resource**. The container instance pane will appear.<p>
-![hotelsysteminstance](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/40cac7ba-2230-4bb1-8ce2-a507fa5a3308)<p>
-
+10. Once the container instance is created, click on **Go to resource**. The container instance pane will appear.
 11. Locate the **fully qualified domain name (FQDN)** of the container instance on the **Overview pane**.<p>
+![hotelsysteminstance](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/40cac7ba-2230-4bb1-8ce2-a507fa5a3308)<p>
+12. Open a web browser and go to the following URL: `http://FQDN/api/reservations/1`. Replace FQDN with the fully qualified domain name of your container instance. For instance, if the visible FQDN in the screenshot above is "example.com", the URL would be: `http://example.com/api/reservations/1`.<p>
+The web app should respond with a JSON object containing the details for reservation 1.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/dd8bde54-c774-459e-bdf4-875096534736)<p>
+We have successfully pushed the Docker image to Azure Container Registry and deployed the image using the Azure Container Instance service.
+
+## Conclusion
+We have successfully packaged an app in a Docker image gives a convenient way to deploy and run the app. We also automated the process of building a Docker image by defining the steps in a `Dockerfile`. After the image was created, it was uploaded to a registry in the **Azure Container Registry**. From there, we created a container instance that runs the web application.
+
+### Clean up resources
+In this project, we created resources by using personal Azure subscription. To avoid being continued to be billed, we would clean up these resources.
+
+1 In the Azure portal, select Home, and then select Resource groups.
+
+2. Find the learn-deploy-container-aci-rg resource group, or whatever resource group name you used, and select it.
+
+3. In the command bar, select Delete resource group. A dialog pane appears asking you to type the resource group name.
+
+4. Enter the name of the resource group (learn-deploy-container-aci-rg or whatever name you used) and then select Delete. All of the resources that you created in this module will be deleted along with the resource group.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/eb719f9a-315c-4bd4-90f7-e071b12be5ab)
+
+
 
 
 
