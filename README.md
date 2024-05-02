@@ -401,9 +401,9 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/56211850-db81-419d-833c-99e1bb13602a)<p>
 3. Input the specified values for each setting on the Basics tab.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/befd0891-81be-4d65-8300-c8a129800c47)<p>
-| Setting	| Value |
+| Setting|Value|
 | ------- | ------ |
-| Project details	|
+|Project details| |
 | Subscription	| Select your default Azure subscription in which you're allowed to create and manage resources |
 | Resource group |	Reuse the existing resource group learn-deploy-container-aci-rg
 Container details	|
