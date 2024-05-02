@@ -392,8 +392,13 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 
 3. Verify that the **reservationsystem** repository is present. Select the **reservationsystem** repository and confirm that it contains an image with the **latest** tag.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/9ce307e0-597e-4004-b58f-f35a1cbd0503)<p>
-![Reservationsystem](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/eb8cd81b-f589-417d-8ba7-aa51aaec02a8)<p>
+![Reservationsystem](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/e7398b30-fc6a-44fd-874d-834245f54da6)<p>
 
+## Load and run an image using Azure Container Instance
+1. In the Azure portal, navigate to the `Create a resource` section. This will open the `Create a resource` pane.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/ec8f817f-c54f-46a3-b259-802879257edb)<p>
+2. From the resource menu, select `Containers` and then choose `Container Instances`.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/56211850-db81-419d-833c-99e1bb13602a)<p>
 
 
 
