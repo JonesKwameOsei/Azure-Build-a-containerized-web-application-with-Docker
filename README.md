@@ -418,13 +418,12 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 | Image registry password |	Enter the password for your registry |
 | OS Type |	Linux |
 | Size |	Leave the default Size set to 1 vcpu, 1.5 GiB memory, 0 gpus | <p>
-
 4. Proceed to the Networking section.
-
 5. For each setting on the Networking tab, input the specified values.<p>
+
 |Setting|Value|
 | -------|------|
-|Project details|
+| Project details |
 | Subscription	| Select your default Azure subscription in which you're allowed to create and manage resources |
 | Resource group |	Reuse the existing resource group learn-deploy-container-aci-rg |
 | Container details	|
