@@ -403,10 +403,10 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/befd0891-81be-4d65-8300-c8a129800c47)<p>
 | Setting|Value|
 | ------- | ------ |
-|Project details| |
+|Project details| 
 | Subscription	| Select your default Azure subscription in which you're allowed to create and manage resources |
 | Resource group |	Reuse the existing resource group learn-deploy-container-aci-rg
-Container details	|
+| Container details	|
 | Container name |	hotelsysteminstance |
 | Region |	Use the default location |
 | Image source |	Docker Hub or other registry |
@@ -420,7 +420,7 @@ Container details	|
 
 |Setting|Value|
 | -------|------|
-|Me|You|
+|Project details|
 
 
 
