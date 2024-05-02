@@ -422,8 +422,8 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 | -------|------|
 |Project details|
 | Subscription	| Select your default Azure subscription in which you're allowed to create and manage resources |
-
-
+| Resource group |	Reuse the existing resource group learn-deploy-container-aci-rg |
+| Container details	|
 
 
 
