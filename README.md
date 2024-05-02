@@ -424,6 +424,15 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 | Subscription	| Select your default Azure subscription in which you're allowed to create and manage resources |
 | Resource group |	Reuse the existing resource group learn-deploy-container-aci-rg |
 | Container details	|
-
+| Container name |	hotelsysteminstance |
+| Region |	Use the default location |
+| Image source |	Docker Hub or other registry |
+| Image type |	Private |
+| Image |	<registry-name>.azurecr.io/reservationsystem:latest |
+| Image registry login server |	Enter the login server name for your registry |
+| Image registry username |	Enter the username for your registry |
+| Image registry password |	Enter the password for your registry |
+| OS Type |	Linux |
+| Size |	Leave the default Size set to 1 vcpu, 1.5 GiB memory, 0 gpus | 
 
 
