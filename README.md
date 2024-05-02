@@ -327,8 +327,9 @@ In this section, we will learn how to rebuild the image for the web app and then
 **N/B**: Azure subscription to to run this exercise, and might incur charges.
 2. In the `Azure portal`, select `Create a resource` from the resource menu or the Home page to open the Create a resource pane.<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/f0f7de6e-981e-4327-a851-5c67d9b0b42d)<p>
-3. Choose `Containers` from the menu, then click on `Container Registry`.
-![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/9bd361e5-d91d-4c97-87ee-4faba6ff2237)
+3. Choose `Containers` from the menu, then click on `Container Registry`.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/9bd361e5-d91d-4c97-87ee-4faba6ff2237)<p>
+
 
 
 
