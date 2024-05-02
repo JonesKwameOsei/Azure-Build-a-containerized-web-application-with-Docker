@@ -423,13 +423,25 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 
 |Setting|Value|
 | -------|------|
-| Project details |
-| Subscription	| Select your default Azure subscription in which you're allowed to create and manage resources |
-| Resource group |	Reuse the existing resource group learn-deploy-container-aci-rg |
-| Container details	|
-| Container name |	hotelsysteminstance |
-| Region |	Use the default location |
+| Networking type |	Public |
+| DNS name label	| Choose a unique name, which will be used as part of the container's URL |
+| Ports	|
+| Ports |	80 |
+| Ports Protocol |	TCP |<p>
 
+6. Choose Next: Advanced.
+7. Under the Advanced tab, input the specified values for each setting.<p>
+
+|Setting|Value|
+| -------|------|
+| Restart policy |	Always |
+| Environment variables |	leave all settings blank |
+| Command override |	leave blank |<p>
+
+8. Choose **Review + Create**. Wait for validation to finish and make any necessary corrections.
+9. Choose **Create**.
+10. Once the container instance is created, click on **Go to resource**. The container instance pane will appear.
+11. Locate the **fully qualified domain name (FQDN)** of the container instance on the **Overview pane**.
 
 
 
