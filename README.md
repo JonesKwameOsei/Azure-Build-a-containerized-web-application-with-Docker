@@ -421,7 +421,7 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 
 4. Proceed to the Networking section.
 
-5. For each setting on the Networking tab, input the specified values.
+5. For each setting on the Networking tab, input the specified values.<p>
 |Setting|Value
 |-----------|--------------|
 |Networking type	Public|
