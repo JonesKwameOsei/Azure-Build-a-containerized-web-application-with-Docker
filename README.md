@@ -318,9 +318,17 @@ The container has been removed:<p>
 ![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/a140df3a-3377-4062-95e7-42da304809bb)
 
 # Deploy a Docker image to an Azure Container Instance
+Previously, we packaged and tested a booking web app as a Docker image for local use. Now, the aim to utilise the results of that process to deploy the web application globally. To achieve this global availability, we will launch the image as an `Azure Container Instance`. <p>
+`Azure Container Instance` allows DevOps team to run a Docker image within the Azure environment.<p>
 
-
-
+In this section, we will learn how to rebuild the image for the web app and then transfer it to Azure Container Registry. Afterwards, we will utilize the Azure Container Instance service to run the image.
+## Create a container registry
+1. Sign in to the [Azure portal](https://portal.azure.com/learn.docs.microsoft.com).
+**N/B**: Azure subscription to to run this exercise, and might incur charges.
+2. In the `Azure portal`, select `Create a resource` from the resource menu or the Home page to open the Create a resource pane.<p>
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/f0f7de6e-981e-4327-a851-5c67d9b0b42d)<p>
+3. Choose `Containers` from the menu, then click on `Container Registry`.
+![image](https://github.com/JonesKwameOsei/Build-a-containerized-web-application-with-Docker-/assets/81886509/9bd361e5-d91d-4c97-87ee-4faba6ff2237)
 
 
 
