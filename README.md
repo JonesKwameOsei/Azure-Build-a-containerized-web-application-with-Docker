@@ -417,7 +417,8 @@ Container details	|
 | OS Type |	Linux |
 | Size |	Leave the default Size set to 1 vcpu, 1.5 GiB memory, 0 gpus | 
 
-
+|Setting|Value|
+|Me|You|
 
 
 
