@@ -412,11 +412,37 @@ docker push <registry-name>.azurecr.io/reservationsystem:latest
 | Region |	Use the default location |
 | Image source |	Docker Hub or other registry |
 | Image type |	Private |
-| Image |	<registry-name>.azurecr.io/reservationsystem:latest |
+| Image |	registry-name.azurecr.io/reservationsystem:latest |
 | Image registry login server |	Enter the login server name for your registry |
 | Image registry username |	Enter the username for your registry |
 | Image registry password |	Enter the password for your registry |
 | OS Type |	Linux |
-| Size |	Leave the default Size set to 1 vcpu, 1.5 GiB memory, 0 gpus | 
+| Size |	Leave the default Size set to 1 vcpu, 1.5 GiB memory, 0 gpus | <p>
+
+4. Proceed to the Networking section.
+
+5. For each setting on the Networking tab, input the specified values.
+|Setting|Value
+|-----------|--------------|
+|Networking type	Public|
+|DNS name label	|Choose a unique name, which will be used as part of the container's URL|
+|Ports	|
+|Ports	|80|
+|Ports protocol	|TCP|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
